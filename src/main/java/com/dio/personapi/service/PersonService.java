@@ -20,10 +20,10 @@ public class PersonService {
 
     private final PersonMapper personMapper = PersonMapper.INSTANCE;
 
-    public String createPerson(PersonDTO personDTO) {
+    public MessageResponseDTO createPerson(PersonDTO personDTO) {
         Person person = personRepository.save(personDTO.toEntity());
 
-        return "Pessoa adicionada " + person.getId();
+        return createMessageResponse(person.getId(),"Pessoa adicionada");
     }
 
     public List<PersonDTO> listAll() {
